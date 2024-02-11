@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
+import { deleteToDoItem } from "./deleteToDoItem.js";
 
-export default class ToDoItem {
+class ToDoItem {
     constructor(title, description, dueDate, priority) {
         this.id = uuidv4();
         this.title = title;
@@ -9,3 +10,7 @@ export default class ToDoItem {
         this.priority = priority;
     }
 };
+
+Object.assign(ToDoItem.prototype, deleteToDoItem);
+
+export { ToDoItem };
