@@ -1,20 +1,14 @@
-import { addToDoItem } from "./addToDoItem.js";
+import { GlobalToDoList } from "./GlobalToDoList.js";
+import { addItemToList } from "./addItemToList.js";
+import { removeItemFromList } from "./removeItemFromList.js";
 
-class ToDoList {
+class ToDoList extends GlobalToDoList {
     constructor(title) {
-        this.title = title;
-        this.toDoItems = [];
+        super(title);
     }
+};
 
-    get title() {
-        return this._title;
-    }
-
-    set title(value) {
-        this._title = value;
-    }
-}
-
-Object.assign(ToDoList.prototype, addToDoItem);
+Object.assign(ToDoList.prototype, addItemToList);
+Object.assign(ToDoList.prototype, removeItemFromList);
 
 export { ToDoList };
