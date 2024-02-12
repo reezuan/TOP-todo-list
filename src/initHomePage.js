@@ -1,8 +1,21 @@
 import { GlobalToDoList } from "./GlobalToDoList.js";
 import { ToDoList } from "./ToDoList.js";
 import { ToDoItem } from "./ToDoItem.js";
+import initHeader from "./initHeader.js";
+import initNavSidebar from "./initNavSidebar.js";
+import initContent from "./initContent.js";
+import initFooter from "./initFooter.js";
 
-function initHome() {
+function initHomePage() {
+    const body = document.querySelector("body");
+
+    body.appendChild(initHeader());
+    body.appendChild(initNavSidebar());
+    body.appendChild(initContent());
+    body.appendChild(initFooter());
+
+    // ---------------------------------------
+
     const globalToDoList = new GlobalToDoList("All tasks");
 
     const testList = new ToDoList("This is a test list");
@@ -22,4 +35,4 @@ function initHome() {
     console.log(testItem1);
 };
 
-export { initHome };
+export { initHomePage };

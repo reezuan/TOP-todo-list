@@ -1,3 +1,3 @@
-import { initHome } from "./initHome.js";
+import { initHomePage } from "./initHomePage.js";
 
-initHome();
+initHomePage();
