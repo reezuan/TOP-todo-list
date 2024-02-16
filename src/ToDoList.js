@@ -3,8 +3,8 @@ import { addItemToList } from "./addItemToList.js";
 import { removeItemFromList } from "./removeItemFromList.js";
 
 class ToDoList extends GlobalToDoList {
-    constructor(title) {
-        super(title);
+    constructor(title, colour, addToFavourites) {
+        super(title, colour, addToFavourites);
     }
 };
 

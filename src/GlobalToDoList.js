@@ -3,9 +3,11 @@ import { addItemToList } from './addItemToList.js';
 import { removeItemFromList } from "./removeItemFromList.js";
 
 class GlobalToDoList {
-    constructor(title) {
+    constructor(title, colour, addToFavourites) {
         this.id = uuidv4();
         this.title = title;
+        this.colour = colour;
+        this.addToFavourites = addToFavourites;
         this.toDoItems = [];
     }
 
