@@ -1,8 +1,8 @@
 import AllTasks from "./assets/inboxes.png";
 import Today from "./assets/calendar-day.png";
 import ThisWeek from "./assets/calendar-week.png";
-import CustomList from "./assets/to-do.png";
-import retrieveLists from "./retrieveLists.js";
+import CustomProject from "./assets/to-do.png";
+import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
 
 export default function initNavSidebar() {
     const navSidebar = document.createElement("nav");
@@ -15,60 +15,60 @@ export default function initNavSidebar() {
     homeSectionHeader.textContent = "Home";
     homeSection.appendChild(homeSectionHeader);
 
-    const homeListsTitles = ["All tasks", "Today", "This week"];
-    const homeListsIcons = [AllTasks, Today, ThisWeek];
+    const homeProjectsTitles = ["All tasks", "Today", "This week"];
+    const homeProjectsIcons = [AllTasks, Today, ThisWeek];
     
-    for (let i = 0; i < homeListsTitles.length; i++) {
-        const listButtonContainer = document.createElement("button");
-        listButtonContainer.classList.add("task-list");
+    for (let i = 0; i < homeProjectsTitles.length; i++) {
+        const projectButtonContainer = document.createElement("button");
+        projectButtonContainer.classList.add("project-list");
         
-        const listButtonIcon = new Image();
-        listButtonIcon.src = homeListsIcons[i];
-        listButtonIcon.classList.add("nav-icon");
+        const projectButtonIcon = new Image();
+        projectButtonIcon.src = homeProjectsIcons[i];
+        projectButtonIcon.classList.add("nav-icon");
 
-        const listButtonTitle = document.createElement("p");
-        listButtonTitle.textContent = `${homeListsTitles[i]}`;
-        listButtonTitle.classList.add("button-title");
+        const projectButtonTitle = document.createElement("p");
+        projectButtonTitle.textContent = `${homeProjectsTitles[i]}`;
+        projectButtonTitle.classList.add("button-title");
 
-        listButtonContainer.appendChild(listButtonIcon);
-        listButtonContainer.appendChild(listButtonTitle);
+        projectButtonContainer.appendChild(projectButtonIcon);
+        projectButtonContainer.appendChild(projectButtonTitle);
 
-        homeSection.appendChild(listButtonContainer);
+        homeSection.appendChild(projectButtonContainer);
     };
 
-    // "Your Lists" section
-    const yourListsSection = document.createElement("div");
+    // "Your Projects" section
+    const yourProjectsSection = document.createElement("div");
 
-    const yourListsSectionHeader = document.createElement("h2");
-    yourListsSectionHeader.textContent = "Your Lists";
-    yourListsSection.appendChild(yourListsSectionHeader);
+    const yourProjectsSectionHeader = document.createElement("h2");
+    yourProjectsSectionHeader.textContent = "Your Projects";
+    yourProjectsSection.appendChild(yourProjectsSectionHeader);
 
-    if (retrieveLists()) {
-        const allLists = retrieveLists().map(item => {
+    if (retrieveProjectsFromStorage()) {
+        const allProjects = retrieveProjectsFromStorage().map(item => {
             return item.title;
         });
 
-        allLists.forEach(listTitle => {
-            const listButtonContainer = document.createElement("button");
-            listButtonContainer.classList.add("task-list");
+        allProjects.forEach(projectTitle => {
+            const projectButtonContainer = document.createElement("button");
+            projectButtonContainer.classList.add("project-list");
 
-            const listButtonIcon = new Image();
-            listButtonIcon.src = CustomList;
-            listButtonIcon.classList.add("nav-icon");
+            const projectButtonIcon = new Image();
+            projectButtonIcon.src = CustomProject;
+            projectButtonIcon.classList.add("nav-icon");
 
-            const listButtonTitle = document.createElement("p");
-            listButtonTitle.textContent = listTitle;
-            listButtonTitle.classList.add("button-title");
+            const projectButtonTitle = document.createElement("p");
+            projectButtonTitle.textContent = projectTitle;
+            projectButtonTitle.classList.add("button-title");
 
-            listButtonContainer.appendChild(listButtonIcon);
-            listButtonContainer.appendChild(listButtonTitle);
+            projectButtonContainer.appendChild(projectButtonIcon);
+            projectButtonContainer.appendChild(projectButtonTitle);
 
-            yourListsSection.appendChild(listButtonContainer);
+            yourProjectsSection.appendChild(projectButtonContainer);
         });
     };
 
     navSidebar.appendChild(homeSection);
-    navSidebar.appendChild(yourListsSection);
+    navSidebar.appendChild(yourProjectsSection);
 
     return navSidebar;
 }

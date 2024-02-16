@@ -74,7 +74,7 @@ header div:first-child img {
     margin-top: 10px;
 }
 
-.sidebar button.task-list {
+.sidebar button.project-list {
     background: none;
     border: none;
     cursor: pointer;
@@ -87,7 +87,7 @@ header div:first-child img {
     gap: 14px;
 }
 
-.sidebar button.task-list:hover {
+.sidebar button.project-list:hover {
     background-color: #CCCCCC;
 }
 

@@ -1,6 +1,3 @@
-import { GlobalToDoList } from "./GlobalToDoList.js";
-import { ToDoList } from "./ToDoList.js";
-import { ToDoItem } from "./ToDoItem.js";
 import initHeader from "./initHeader.js";
 import initNavSidebar from "./initNavSidebar.js";
 import initContent from "./initContent.js";
