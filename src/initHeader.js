@@ -1,7 +1,7 @@
-import CollapseMenuIcon from "./collapse.png";
-import RevealMenuIcon from "./reveal-menu.png";
-import HomeIcon from "./home.png";
-import SiteLogo from "./site-logo.png";
+import CollapseMenuIcon from "./assets/collapse.png";
+import RevealMenuIcon from "./assets/reveal-menu.png";
+import HomeIcon from "./assets/home.png";
+import SiteLogo from "./assets/site-logo.png";
 
 export default function initHeader() {
     const header = document.createElement("header");

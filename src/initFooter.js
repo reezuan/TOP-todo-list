@@ -1,4 +1,4 @@
-import GitHubLogo from "./github.png";
+import GitHubLogo from "./assets/github.png";
 
 export default function initFooter() {
     const footer = document.createElement("footer");

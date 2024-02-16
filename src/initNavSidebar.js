@@ -1,7 +1,7 @@
-import AllTasks from "./inboxes.png";
-import Today from "./calendar-day.png";
-import ThisWeek from "./calendar-week.png";
-import CustomList from "./to-do.png";
+import AllTasks from "./assets/inboxes.png";
+import Today from "./assets/calendar-day.png";
+import ThisWeek from "./assets/calendar-week.png";
+import CustomList from "./assets/to-do.png";
 import retrieveLists from "./retrieveLists.js";
 
 export default function initNavSidebar() {
