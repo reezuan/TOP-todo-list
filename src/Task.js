@@ -10,6 +10,8 @@ class Task {
         this.dueDate = new Date(dueDate);
         this.priority = priority;
         this.labels = [];
+        this.associatedProject;
+        this.completed = false;
     }
 };
 
