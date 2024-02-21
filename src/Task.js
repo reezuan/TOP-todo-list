@@ -4,14 +4,50 @@ import { deleteTask } from "./deleteTask.js";
 
 class Task {
     constructor(title, description, dueDate, priority) {
-        this.id = uuidv4();
-        this.title = title;
-        this.description = description;
+        const id = uuidv4();
+
+        Object.defineProperty(this, "_id", {
+            value: id,
+            writable: false,
+            enumerable: true,
+            configurable: false
+        });
+
+        this._title = title;
+        this._description = description;
         this.dueDate = new Date(dueDate);
-        this.priority = priority;
+        this._priority = priority;
         this.labels = [];
         this.associatedProject;
         this.completed = false;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    get title() {
+        return this._title;
+    }
+
+    set title(newTitle) {
+        this._title = newTitle;
+    }
+
+    get description() {
+        return this._description;
+    }
+
+    set description(newDescription) {
+        this._description = newDescription;
+    }
+
+    get priority() {
+        return this._priority;
+    }
+
+    set priority(newPriority) {
+        this._priority = newPriority;
     }
 };
 

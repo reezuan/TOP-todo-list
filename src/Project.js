@@ -4,19 +4,39 @@ import { removeTaskFromProject } from "./removeTaskFromProject.js";
 
 class Project {
     constructor(title, colour, addToFavourites) {
-        this.id = uuidv4();
-        this.title = title;
-        this.colour = colour;
+        const id = uuidv4();
+
+        Object.defineProperty(this, "_id", {
+            value: id,
+            writable: false,
+            enumerable: true,
+            configurable: false
+        });
+
+        this._title = title;
+        this._colour = colour;
         this.addToFavourites = addToFavourites;
         this.tasks = [];
+    }
+
+    get id() {
+        return this._id;
     }
 
     get title() {
         return this._title;
     }
 
-    set title(value) {
-        this._title = value;
+    set title(newTitle) {
+        this._title = newTitle;
+    }
+
+    get colour() {
+        return this._colour;
+    }
+
+    set colour(newColour) {
+        this._colour = newColour;
     }
 }
 
