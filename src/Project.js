@@ -6,37 +6,17 @@ class Project {
     constructor(title, colour, addToFavourites) {
         const id = uuidv4();
 
-        Object.defineProperty(this, "_id", {
+        Object.defineProperty(this, "id", {
             value: id,
             writable: false,
             enumerable: true,
             configurable: false
         });
 
-        this._title = title;
-        this._colour = colour;
+        this.title = title;
+        this.colour = colour;
         this.addToFavourites = addToFavourites;
         this.tasks = [];
-    }
-
-    get id() {
-        return this._id;
-    }
-
-    get title() {
-        return this._title;
-    }
-
-    set title(newTitle) {
-        this._title = newTitle;
-    }
-
-    get colour() {
-        return this._colour;
-    }
-
-    set colour(newColour) {
-        this._colour = newColour;
     }
 }
 
