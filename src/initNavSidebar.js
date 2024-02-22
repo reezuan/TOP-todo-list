@@ -2,7 +2,9 @@ import AllTasks from "./assets/inboxes.png";
 import Today from "./assets/calendar-day.png";
 import ThisWeek from "./assets/calendar-week.png";
 import CustomProject from "./assets/to-do.png";
+import Plus from "./assets/plus.png";
 import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
+import saveProjectToStorage from "./saveProjectToStorage.js";
 
 export default function initNavSidebar() {
     const navSidebar = document.createElement("nav");
@@ -10,9 +12,20 @@ export default function initNavSidebar() {
 
     // "Home" section
     const homeSection = document.createElement("div");
+
+    const homeSectionHeader = document.createElement("div");
+    homeSectionHeader.classList.add("section-header");
+    homeSection.appendChild(homeSectionHeader);
+
+    const homeHeaderContent = document.createElement("div");
+    homeHeaderContent.classList.add("section-header-content");
+    homeSectionHeader.appendChild(homeHeaderContent);
     
-    const homeSectionHeader = document.createElement("h2");
-    homeSectionHeader.textContent = "Home";
+    const homeSectionTitle = document.createElement("h2");
+    homeSectionTitle.textContent = "Home";
+    homeHeaderContent.appendChild(homeSectionTitle);
+    homeSectionHeader.appendChild(homeHeaderContent);
+    
     homeSection.appendChild(homeSectionHeader);
 
     const homeProjectsTitles = ["All tasks", "Today", "This week"];
@@ -39,8 +52,23 @@ export default function initNavSidebar() {
     // "Your Projects" section
     const yourProjectsSection = document.createElement("div");
 
-    const yourProjectsSectionHeader = document.createElement("h2");
-    yourProjectsSectionHeader.textContent = "Your Projects";
+    const yourProjectsSectionHeader = document.createElement("div");
+    yourProjectsSectionHeader.classList.add("section-header");
+
+    const yourProjectsHeaderContent = document.createElement("div");
+    yourProjectsHeaderContent.classList.add("section-header-content");
+    yourProjectsSectionHeader.appendChild(yourProjectsHeaderContent);
+
+    const yourProjectsSectionTitle = document.createElement("h2");
+    yourProjectsSectionTitle.textContent = "Your Projects";
+    yourProjectsHeaderContent.appendChild(yourProjectsSectionTitle);
+
+    const addProjectButton = document.createElement("button");
+    const addProjectIcon = new Image();
+    addProjectIcon.src = Plus;
+    addProjectButton.appendChild(addProjectIcon);
+    yourProjectsHeaderContent.appendChild(addProjectButton);
+    
     yourProjectsSection.appendChild(yourProjectsSectionHeader);
 
     if (retrieveProjectsFromStorage()) {

@@ -26,8 +26,8 @@ function initHomePage() {
     console.log(testProject);
 
     body.appendChild(initHeader());
-    body.appendChild(initContent(testProject));
     body.appendChild(initNavSidebar());
+    body.appendChild(initContent(testProject));
     body.appendChild(initFooter());
 };
 
