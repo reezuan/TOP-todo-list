@@ -5,8 +5,13 @@ import CustomProject from "./assets/to-do.png";
 import Plus from "./assets/plus.png";
 import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
 import saveProjectToStorage from "./saveProjectToStorage.js";
+import openModal from "./openModal.js";
 
 export default function initNavSidebar() {
+    if (document.querySelector(".sidebar") != null) { // Test if sidebar already exists.
+        document.querySelector(".sidebar").remove();
+    }
+    
     const navSidebar = document.createElement("nav");
     navSidebar.classList.add("sidebar");
 
@@ -63,9 +68,17 @@ export default function initNavSidebar() {
     yourProjectsSectionTitle.textContent = "Your Projects";
     yourProjectsHeaderContent.appendChild(yourProjectsSectionTitle);
 
+    // "Add project" button
     const addProjectButton = document.createElement("button");
+    addProjectButton.setAttribute("data-modal-target", "#add-project-modal");
     const addProjectIcon = new Image();
     addProjectIcon.src = Plus;
+
+    addProjectButton.addEventListener("click", () => {
+        const addProjectModal = document.querySelector("#add-project-modal");
+        openModal(addProjectModal);
+    });
+    
     addProjectButton.appendChild(addProjectIcon);
     yourProjectsHeaderContent.appendChild(addProjectButton);
     

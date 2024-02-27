@@ -3,7 +3,7 @@ import { addTaskToProject } from "./addTaskToProject.js";
 import { removeTaskFromProject } from "./removeTaskFromProject.js";
 
 class Project {
-    constructor(title, colour, addToFavourites) {
+    constructor(title) {
         const id = uuidv4();
 
         Object.defineProperty(this, "id", {
@@ -14,8 +14,6 @@ class Project {
         });
 
         this.title = title;
-        this.colour = colour;
-        this.addToFavourites = addToFavourites;
         this.tasks = [];
     }
 }
