@@ -3,14 +3,19 @@ import Today from "./assets/calendar-day.png";
 import ThisWeek from "./assets/calendar-week.png";
 import CustomProject from "./assets/to-do.png";
 import Plus from "./assets/plus.png";
+import Rename from "./assets/edit-text.png";
+import Delete from "./assets/trash-can.png";
 import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
-import saveProjectToStorage from "./saveProjectToStorage.js";
 import openModal from "./openModal.js";
+import initRenameProjectModal from "./initRenameProjectModal.js";
 
 export default function initNavSidebar() {
-    if (document.querySelector(".sidebar") != null) { // Test if sidebar already exists.
+    if (document.querySelector(".sidebar")) { // Test if sidebar already exists.
         document.querySelector(".sidebar").remove();
     }
+
+    const body = document.querySelector("body");
+    const deleteProjectModal = document.querySelector("#delete-project-modal");
     
     const navSidebar = document.createElement("nav");
     navSidebar.classList.add("sidebar");
@@ -85,11 +90,9 @@ export default function initNavSidebar() {
     yourProjectsSection.appendChild(yourProjectsSectionHeader);
 
     if (retrieveProjectsFromStorage()) {
-        const allProjects = retrieveProjectsFromStorage().map(item => {
-            return item.title;
-        });
+        const allProjects = retrieveProjectsFromStorage();
 
-        allProjects.forEach(projectTitle => {
+        allProjects.forEach(Project => {
             const projectButtonContainer = document.createElement("button");
             projectButtonContainer.classList.add("project-list");
 
@@ -98,13 +101,39 @@ export default function initNavSidebar() {
             projectButtonIcon.classList.add("nav-icon");
 
             const projectButtonTitle = document.createElement("p");
-            projectButtonTitle.textContent = projectTitle;
+            projectButtonTitle.textContent = Project.title;
             projectButtonTitle.classList.add("button-title");
+
+            // Container for rename & delete buttons
+            const projectActions = document.createElement("div");
+            projectActions.classList.add("action-buttons");
+            projectActions.style.setProperty("margin-left", "auto");
+            
+            // 'Rename' button
+            const renameProjectButton = document.createElement("button");
+            const renameProjectIcon = new Image();
+            renameProjectIcon.src = Rename;
+            renameProjectIcon.classList.add("nav-icon");
+            renameProjectButton.appendChild(renameProjectIcon);
+            renameProjectButton.addEventListener("click", () => {
+                body.appendChild(initRenameProjectModal(Project));
+                openModal(document.querySelector("#rename-project-modal"));
+            });
+            projectActions.appendChild(renameProjectButton);
+            
+            // 'Delete' button
+            const deleteProjectButton = document.createElement("button");
+            const deleteProjectIcon = new Image();
+            deleteProjectIcon.src = Delete;
+            deleteProjectIcon.classList.add("nav-icon");
+            deleteProjectButton.appendChild(deleteProjectIcon);
+            projectActions.appendChild(deleteProjectButton);
+
+            yourProjectsSection.appendChild(projectButtonContainer);
 
             projectButtonContainer.appendChild(projectButtonIcon);
             projectButtonContainer.appendChild(projectButtonTitle);
-
-            yourProjectsSection.appendChild(projectButtonContainer);
+            projectButtonContainer.appendChild(projectActions);
         });
     };
 

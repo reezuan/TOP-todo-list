@@ -46,10 +46,11 @@ export default function initAddProjectModal() {
     addProjectForm.appendChild(createProjectButton);
 
     addProjectForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        
         let newProjectTitle = document.querySelector("#project-title");
         const body = document.querySelector("body");
         
-        event.preventDefault();
         createProject(newProjectTitle.value);
         closeModal(addProjectForm.closest(".modal"));
         addProjectForm.reset();

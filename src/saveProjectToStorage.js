@@ -1,7 +1,12 @@
-let allProjects = [];
-
 export default function saveProjectToStorage(Project) {
-    console.log(allProjects);
+    let allProjects;
+    
+    if (localStorage.getItem("allProjects")) {
+        allProjects = JSON.parse(localStorage.getItem("allProjects"));
+    } else {
+        allProjects = [];
+    }
+
     allProjects.push(Project);
     localStorage.setItem("allProjects", JSON.stringify(allProjects));
 };
