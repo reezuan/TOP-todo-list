@@ -8,6 +8,7 @@ import Delete from "./assets/trash-can.png";
 import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
 import openModal from "./openModal.js";
 import initRenameProjectModal from "./initRenameProjectModal.js";
+import initDeleteProjectModal from "./initDeleteProjectModal.js";
 
 export default function initNavSidebar() {
     if (document.querySelector(".sidebar")) { // Test if sidebar already exists.
@@ -127,6 +128,10 @@ export default function initNavSidebar() {
             deleteProjectIcon.src = Delete;
             deleteProjectIcon.classList.add("nav-icon");
             deleteProjectButton.appendChild(deleteProjectIcon);
+            deleteProjectButton.addEventListener("click", () => {
+                body.appendChild(initDeleteProjectModal(Project));
+                openModal(document.querySelector("#delete-project-modal"));
+            });
             projectActions.appendChild(deleteProjectButton);
 
             yourProjectsSection.appendChild(projectButtonContainer);

@@ -1,18 +1,16 @@
 import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
 
-const renameProject = {
-    rename(newTitle) {
+const deleteProject = {
+    delete() {
         let allProjects = retrieveProjectsFromStorage();
         let currentIndex = allProjects.findIndex(Project => Project.id === this.id);
 
-        this.title = newTitle;
-
         if (currentIndex != -1) {
-            allProjects.splice(currentIndex, 1, this);
+            allProjects.splice(currentIndex, 1);
         };
         
         localStorage.setItem("allProjects", JSON.stringify(allProjects));
     }
 };
 
-export { renameProject };
+export { deleteProject };

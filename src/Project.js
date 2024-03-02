@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { addTaskToProject } from "./addTaskToProject.js";
 import { removeTaskFromProject } from "./removeTaskFromProject.js";
 import { renameProject } from "./renameProject.js";
+import { deleteProject } from "./deleteProject.js";
 
 class Project {
     constructor(title) {
@@ -22,5 +23,6 @@ class Project {
 Object.assign(Project.prototype, addTaskToProject);
 Object.assign(Project.prototype, removeTaskFromProject);
 Object.assign(Project.prototype, renameProject);
+Object.assign(Project.prototype, deleteProject);
 
 export { Project };

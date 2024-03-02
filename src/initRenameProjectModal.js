@@ -22,12 +22,6 @@ export default function initRenameProjectModal(Project) {
     const renameProjectForm = document.createElement("form");
     renameProjectModal.appendChild(renameProjectForm);
 
-    /* // [Hidden] Project ID
-    const projectIdInput = document.createElement("input");
-    projectIdInput.setAttribute("type", "hidden");
-    projectIdInput.setAttribute("id", "project-id");
-    projectIdInput.setAttribute("name", "project-id"); */
-
     // Rename title input
     const titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "edited-title");
@@ -60,7 +54,6 @@ export default function initRenameProjectModal(Project) {
         event.preventDefault();
         
         const editedProjectTitle = document.querySelector("#edited-title");
-        /* const editedProjectId = document.querySelector("#project-id"); */
         const body = document.querySelector("body");
         const projectToEdit = getProject(Project.id);
 
