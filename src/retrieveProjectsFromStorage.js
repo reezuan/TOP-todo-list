@@ -7,6 +7,7 @@ export default function retrieveProjectsFromStorage() {
         allProjects.forEach(project => {
             Object.setPrototypeOf(project, Project.prototype);
         });
+        
         return allProjects;
     } else {
         return;

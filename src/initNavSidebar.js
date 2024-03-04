@@ -9,6 +9,7 @@ import retrieveProjectsFromStorage from "./retrieveProjectsFromStorage.js";
 import openModal from "./openModal.js";
 import initRenameProjectModal from "./initRenameProjectModal.js";
 import initDeleteProjectModal from "./initDeleteProjectModal.js";
+import initContent from "./initContent.js";
 
 export default function initNavSidebar() {
     if (document.querySelector(".sidebar")) { // Test if sidebar already exists.
@@ -104,6 +105,10 @@ export default function initNavSidebar() {
             const projectButtonTitle = document.createElement("p");
             projectButtonTitle.textContent = Project.title;
             projectButtonTitle.classList.add("button-title");
+
+            projectButtonContainer.addEventListener("click", () => {
+                body.appendChild(initContent(Project));
+            });
 
             // Container for rename & delete buttons
             const projectActions = document.createElement("div");

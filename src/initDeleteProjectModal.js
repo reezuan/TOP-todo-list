@@ -1,6 +1,5 @@
 import closeModal from "./closeModal.js";
 import initNavSidebar from "./initNavSidebar.js";
-import getProject from "./getProject.js";
 
 export default function initDeleteProjectModal(Project) {
     if (document.querySelector("#delete-project-modal") != null) { // Test if modal already exists.

@@ -3,6 +3,10 @@ import LabelIcon from "./assets/label.png";
 import retrieveTasksFromStorage from "./retrieveTasksFromStorage.js";
 
 export default function initContent(Project) {
+    if (document.querySelector("section")) {
+        document.querySelector("section").remove();
+    };
+
     let projectName;
     let tasksToDisplay;
 
@@ -12,7 +16,7 @@ export default function initContent(Project) {
     } else {
         projectName = Project.title;
         tasksToDisplay = Project.tasks;
-    }
+    };
     
     const content = document.createElement("section");
     
