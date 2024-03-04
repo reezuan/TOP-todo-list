@@ -6,6 +6,10 @@ export default function retrieveProjectsFromStorage() {
         
         allProjects.forEach(project => {
             Object.setPrototypeOf(project, Project.prototype);
+
+            project.tasks.forEach(task => {
+                task.dueDate = new Date(task.dueDate);
+            });
         });
         
         return allProjects;
