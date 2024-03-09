@@ -1,5 +1,6 @@
 import { AllTasksIcon, TodayIcon, WeekIcon, CustomProjectIcon, AddIcon,
     RenameIcon, DeleteIcon } from "../assets/index.js";
+import { allTasksButton } from "./allTasksButton.js";
 import { renameProjectModal } from "../components/renameProjectModal.js";
 import { deleteProjectModal } from "../components/deleteProjectModal.js";
 import { mainContent } from "../components/mainContent.js";
@@ -34,8 +35,12 @@ function navSidebar() {
     
     homeSection.appendChild(homeSectionHeader);
 
-    const homeProjectsTitles = ["All tasks", "Today", "This week"];
-    const homeProjectsIcons = [AllTasksIcon, TodayIcon, WeekIcon];
+
+    // ---------------------------- //
+    homeSection.appendChild(allTasksButton());
+
+    const homeProjectsTitles = ["Today", "This week"];
+    const homeProjectsIcons = [TodayIcon, WeekIcon];
     
     for (let i = 0; i < homeProjectsTitles.length; i++) {
         const projectButtonContainer = document.createElement("button");
@@ -54,6 +59,7 @@ function navSidebar() {
 
         homeSection.appendChild(projectButtonContainer);
     };
+    // ---------------------------- //
 
     // "Your Projects" section
     const yourProjectsSection = document.createElement("div");
