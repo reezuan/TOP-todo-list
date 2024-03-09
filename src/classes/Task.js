@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { addLabelToTask } from "../extensions/addLabelToTask.js";
+import { setAssociatedProject } from "../extensions/setAssociatedProject.js";
 
 class Task {
     constructor(title, description, dueDate) {
@@ -22,5 +23,6 @@ class Task {
 };
 
 Object.assign(Task.prototype, addLabelToTask);
+Object.assign(Task.prototype, setAssociatedProject);
 
 export { Task };

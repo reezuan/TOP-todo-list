@@ -8,8 +8,6 @@ function mainContent(Project) {
         document.querySelector("section").remove();
     };
 
-    console.log(Project);
-
     let projectName;
     let tasksToDisplay;
 
@@ -19,7 +17,6 @@ function mainContent(Project) {
     } else {
         projectName = Project.title;
         tasksToDisplay = Project.tasks;
-        console.log(Project.tasks);
     };
     
     const content = document.createElement("section");
@@ -80,7 +77,7 @@ function mainContent(Project) {
             // Task assigned project
             const taskProject = document.createElement("button");
             taskProject.classList.add("task-project");
-            taskProject.textContent = projectName;
+            taskProject.textContent = `${task.associatedProject ? task.associatedProject.title : "All tasks"}`;
             taskInfoLabels.appendChild(taskProject);
 
             taskList.appendChild(taskCard);
@@ -155,11 +152,16 @@ function mainContent(Project) {
             const newTaskName = document.querySelector("#task-name").value;
             const newTaskDescription = document.querySelector("#task-description").value;
             const newTaskDueDate = document.querySelector("#task-due-date").value;
+            
+            const newTask = createTask(newTaskName, newTaskDescription, newTaskDueDate);
 
-            console.log(Project);
-            Project.addTask(createTask(newTaskName, newTaskDescription, newTaskDueDate));
-
-            body.appendChild(mainContent(Project));
+            if (projectName === "All tasks") {
+                body.appendChild(mainContent());
+            } else {
+                newTask.setAssociatedProject(Project);
+                Project.addTask(newTask);
+                body.appendChild(mainContent(Project));
+            }
         });
 
         // Append form to main content

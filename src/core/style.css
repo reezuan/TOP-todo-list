@@ -146,8 +146,8 @@ header div:first-child img {
 
 section {
     padding-top: 100px;
-    padding-left: max(30%, 100px);
-    padding-right: max(30%, 100px);
+    padding-left: max(25%, 100px);
+    padding-right: max(25%, 100px);
     
     display: flex;
     flex-direction: column;
