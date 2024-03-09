@@ -1,6 +1,7 @@
 import { navSidebar } from "../components/navSidebar.js";
 import { closeModal } from "../utils/closeModal.js";
 import { createProject } from "../utils/createProject.js";
+import { saveProjectToStorage } from "../utils/saveProjectToStorage.js";
 
 function addProjectModal() {
     // "Add Project" modal
@@ -50,8 +51,9 @@ function addProjectModal() {
         
         let newProjectTitle = document.querySelector("#project-title");
         const body = document.querySelector("body");
-        
-        createProject(newProjectTitle.value);
+        const newProject = createProject(newProjectTitle.value);
+
+        saveProjectToStorage(newProject);
         closeModal(addProjectForm.closest(".modal"));
         addProjectForm.reset();
 

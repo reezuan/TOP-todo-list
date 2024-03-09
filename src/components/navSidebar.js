@@ -1,5 +1,4 @@
-import { AllTasksIcon, TodayIcon, WeekIcon, CustomProjectIcon, AddIcon,
-    RenameIcon, DeleteIcon } from "../assets/index.js";
+import { TodayIcon, WeekIcon, CustomProjectIcon, AddIcon, RenameIcon, DeleteIcon } from "../assets/index.js";
 import { allTasksButton } from "./allTasksButton.js";
 import { renameProjectModal } from "../components/renameProjectModal.js";
 import { deleteProjectModal } from "../components/deleteProjectModal.js";
