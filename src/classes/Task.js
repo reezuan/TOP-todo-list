@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { addLabelToTask } from "../extensions/addLabelToTask.js";
-import { setAssociatedProject } from "../extensions/setAssociatedProject.js";
+import { setAssociatedProjectId } from "../extensions/setAssociatedProjectId.js";
 
 class Task {
     constructor(title, description, dueDate) {
@@ -17,12 +17,12 @@ class Task {
         this.description = description;
         this.dueDate = new Date(dueDate);
         this.labels = [];
-        this.associatedProject;
+        this.associatedProjectId = undefined;
         this.completed = false;
     }
 };
 
 Object.assign(Task.prototype, addLabelToTask);
-Object.assign(Task.prototype, setAssociatedProject);
+Object.assign(Task.prototype, setAssociatedProjectId);
 
 export { Task };

@@ -1,7 +1,7 @@
-import { LabelIcon, AddIcon } from "../assets/index.js";
-import { formatTaskCardDate } from "../utils/formatTaskCardDate.js";
-import { retrieveTasksFromStorage } from "../utils/retrieveTasksFromStorage.js";
+import { AddIcon } from "../assets/index.js";
+import { taskCard } from "./taskCard.js";
 import { createTask } from "../utils/createTask.js";
+import { saveTaskToStorage } from "../utils/saveTaskToStorage.js";
 
 function mainContent(Project) {
     if (document.querySelector("section")) {
@@ -17,59 +17,8 @@ function mainContent(Project) {
     const taskList = document.createElement("div");
 
     if (Project.tasks.length !== 0) {
-        Project.tasks.forEach(task => {
-            const taskCard = document.createElement("button");
-            taskCard.classList.add("task-card");
-
-            // Checkbox
-            const taskCheckbox = document.createElement("button");
-            taskCheckbox.classList.add("task-checkbox");
-            taskCard.appendChild(taskCheckbox);
-
-            // Task title
-            const taskTitle = document.createElement("h3");
-            taskTitle.classList.add("task-title");
-            taskTitle.textContent = `${task.title}`;
-            taskCard.appendChild(taskTitle);
-
-            // Task metadata (date, labels & assigned project)
-            const taskInfoLabels = document.createElement("div");
-            taskInfoLabels.classList.add("task-info-labels");
-            taskCard.appendChild(taskInfoLabels);
-            
-            // Task due date
-            const taskDueDate = document.createElement("button");
-            taskDueDate.classList.add("task-due-date");
-            taskDueDate.textContent = `${formatTaskCardDate(task.dueDate)}`;
-            taskInfoLabels.appendChild(taskDueDate);
-
-            // Task labels
-            const taskLabels = document.createElement("div");
-            taskLabels.classList.add("task-labels");
-            task.labels.forEach(item => {
-                const label = document.createElement("button");
-
-                // Label icon
-                const labelIcon = new Image();
-                labelIcon.src = LabelIcon;
-                label.appendChild(labelIcon);
-                
-                // Label text
-                const labelText = document.createElement("p");
-                labelText.textContent = item;
-                label.appendChild(labelText);
-                
-                taskLabels.appendChild(label);
-            });
-            taskInfoLabels.appendChild(taskLabels);
-
-            // Task assigned project
-            const taskProject = document.createElement("button");
-            taskProject.classList.add("task-project");
-            taskProject.textContent = `${task.associatedProject ? task.associatedProject.title : "All tasks"}`;
-            taskInfoLabels.appendChild(taskProject);
-
-            taskList.appendChild(taskCard);
+        Project.tasks.forEach(Task => {
+            taskList.appendChild(taskCard(Task));
         });
     };
 
@@ -141,14 +90,15 @@ function mainContent(Project) {
             const newTaskName = document.querySelector("#task-name").value;
             const newTaskDescription = document.querySelector("#task-description").value;
             const newTaskDueDate = document.querySelector("#task-due-date").value;
-            
             const newTask = createTask(newTaskName, newTaskDescription, newTaskDueDate);
 
             if (Project.createdByUser === false) {
+                saveTaskToStorage(newTask);
                 const projectConstructor = Project.constructor;
                 body.appendChild(mainContent(new projectConstructor()));
             } else {
-                newTask.setAssociatedProject(Project);
+                newTask.setAssociatedProjectId(Project);
+                saveTaskToStorage(newTask);
                 Project.addTask(newTask);
                 body.appendChild(mainContent(Project));
             }
