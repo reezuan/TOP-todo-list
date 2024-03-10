@@ -1,6 +1,7 @@
-import { WeekIcon, CustomProjectIcon, AddIcon, RenameIcon, DeleteIcon } from "../assets/index.js";
+import { CustomProjectIcon, AddIcon, RenameIcon, DeleteIcon } from "../assets/index.js";
 import { allTasksButton } from "./allTasksButton.js";
 import { todayButton } from "./todayButton.js";
+import { thisWeekButton } from "./thisWeekButton.js";
 import { renameProjectModal } from "../components/renameProjectModal.js";
 import { deleteProjectModal } from "../components/deleteProjectModal.js";
 import { mainContent } from "../components/mainContent.js";
@@ -34,33 +35,9 @@ function navSidebar() {
     homeSectionHeader.appendChild(homeHeaderContent);
     
     homeSection.appendChild(homeSectionHeader);
-
-
-    // ---------------------------- //
     homeSection.appendChild(allTasksButton());
     homeSection.appendChild(todayButton());
-
-    const homeProjectsTitles = ["This week"];
-    const homeProjectsIcons = [WeekIcon];
-    
-    for (let i = 0; i < homeProjectsTitles.length; i++) {
-        const projectButtonContainer = document.createElement("button");
-        projectButtonContainer.classList.add("project-list");
-        
-        const projectButtonIcon = new Image();
-        projectButtonIcon.src = homeProjectsIcons[i];
-        projectButtonIcon.classList.add("nav-icon");
-
-        const projectButtonTitle = document.createElement("p");
-        projectButtonTitle.textContent = `${homeProjectsTitles[i]}`;
-        projectButtonTitle.classList.add("button-title");
-
-        projectButtonContainer.appendChild(projectButtonIcon);
-        projectButtonContainer.appendChild(projectButtonTitle);
-
-        homeSection.appendChild(projectButtonContainer);
-    };
-    // ---------------------------- //
+    homeSection.appendChild(thisWeekButton());
 
     // "Your Projects" section
     const yourProjectsSection = document.createElement("div");
