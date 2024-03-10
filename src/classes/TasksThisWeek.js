@@ -2,8 +2,9 @@ import { CoreProject } from "./CoreProject.js";
 import { retrieveTasksFromStorage } from "../utils/retrieveTasksFromStorage.js";
 
 class TasksThisWeek extends CoreProject {
-    constructor(title) {
-        super(title);
+    constructor() {
+        super();
+        this.title = "This week";
         this.tasks = retrieveTasksFromStorage().filter(Task => {
             // Get current date & time
             const now = new Date();

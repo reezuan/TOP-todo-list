@@ -34,7 +34,6 @@ function navSidebar() {
     homeHeaderContent.appendChild(homeSectionTitle);
     homeSectionHeader.appendChild(homeHeaderContent);
     
-    homeSection.appendChild(homeSectionHeader);
     homeSection.appendChild(allTasksButton());
     homeSection.appendChild(todayButton());
     homeSection.appendChild(thisWeekButton());

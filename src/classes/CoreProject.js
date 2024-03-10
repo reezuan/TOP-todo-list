@@ -1,8 +1,8 @@
 import { Project } from "./Project.js";
 
 class CoreProject extends Project {
-    constructor(title) {
-        super(title);
+    constructor() {
+        super();
         this.createdByUser = false;
     }
 }

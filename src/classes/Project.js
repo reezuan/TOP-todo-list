@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 class Project {
-    constructor(title) {
+    constructor() {
         const id = uuidv4();
 
         Object.defineProperty(this, "id", {
@@ -11,7 +11,6 @@ class Project {
             configurable: false
         });
 
-        this.title = title;
         this.tasks = [];
     }
 }

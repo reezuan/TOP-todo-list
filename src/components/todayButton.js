@@ -21,7 +21,7 @@ function todayButton() {
     buttonContainer.appendChild(buttonText);
 
     buttonContainer.addEventListener("click", () => {
-        const todayProject = new TasksToday("Today");
+        const todayProject = new TasksToday();
         body.appendChild(mainContent(todayProject));
     });
 

@@ -21,7 +21,7 @@ function allTasksButton() {
     buttonContainer.appendChild(buttonText);
 
     buttonContainer.addEventListener("click", () => {
-        const allTasksProject = new AllTasks("All tasks");
+        const allTasksProject = new AllTasks();
         body.appendChild(mainContent(allTasksProject));
     });
 

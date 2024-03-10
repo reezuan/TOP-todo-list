@@ -21,7 +21,7 @@ function thisWeekButton() {
     buttonContainer.appendChild(buttonText);
 
     buttonContainer.addEventListener("click", () => {
-        const thisWeekProject = new TasksThisWeek("This week");
+        const thisWeekProject = new TasksThisWeek();
         body.appendChild(mainContent(thisWeekProject));
     });
 

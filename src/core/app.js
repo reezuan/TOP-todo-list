@@ -1,3 +1,4 @@
+import { AllTasks } from "../classes/AllTasks.js";
 import { header } from "../components/header.js";
 import { navSidebar } from "../components/navSidebar.js";
 import { mainContent } from "../components/mainContent.js";
@@ -16,7 +17,7 @@ import "./style.css";
 
     body.appendChild(header());
     body.appendChild(navSidebar());
-    body.appendChild(mainContent());
+    body.appendChild(mainContent(new AllTasks("All tasks")));
     body.appendChild(footer());
     body.appendChild(overlay());
     body.appendChild(addProjectModal());

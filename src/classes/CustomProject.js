@@ -6,7 +6,8 @@ import { deleteProject } from "../extensions/deleteProject.js";
 
 class CustomProject extends Project {
     constructor(title) {
-        super(title);
+        super();
+        this.title = title;
         this.createdByUser = true;
     }
 }

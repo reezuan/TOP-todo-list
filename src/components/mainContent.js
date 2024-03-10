@@ -7,28 +7,17 @@ function mainContent(Project) {
     if (document.querySelector("section")) {
         document.querySelector("section").remove();
     };
-
-    let projectName;
-    let tasksToDisplay;
-
-    if (arguments.length === 0) {
-        projectName = "All tasks";
-        tasksToDisplay = retrieveTasksFromStorage();
-    } else {
-        projectName = Project.title;
-        tasksToDisplay = Project.tasks;
-    };
     
     const content = document.createElement("section");
     
     const projectTitle = document.createElement("h2");
     projectTitle.classList.add("project-title");
-    projectTitle.textContent = projectName;
+    projectTitle.textContent = Project.title;
     
     const taskList = document.createElement("div");
 
-    if (tasksToDisplay.length !== 0) {
-        tasksToDisplay.forEach(task => {
+    if (Project.tasks.length !== 0) {
+        Project.tasks.forEach(task => {
             const taskCard = document.createElement("button");
             taskCard.classList.add("task-card");
 
@@ -155,8 +144,9 @@ function mainContent(Project) {
             
             const newTask = createTask(newTaskName, newTaskDescription, newTaskDueDate);
 
-            if (projectName === "All tasks") {
-                body.appendChild(mainContent());
+            if (Project.createdByUser === false) {
+                const projectConstructor = Project.constructor;
+                body.appendChild(mainContent(new projectConstructor()));
             } else {
                 newTask.setAssociatedProject(Project);
                 Project.addTask(newTask);
