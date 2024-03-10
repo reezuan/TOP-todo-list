@@ -1,5 +1,6 @@
 import { AllTasksIcon } from "../assets/index.js";
 import { mainContent } from "../components/mainContent.js";
+import { AllTasks } from "../classes/AllTasks.js";
 
 function allTasksButton() {
     const body = document.querySelector("body");
@@ -20,7 +21,8 @@ function allTasksButton() {
     buttonContainer.appendChild(buttonText);
 
     buttonContainer.addEventListener("click", () => {
-        body.appendChild(mainContent());
+        const allTasksProject = new AllTasks("All tasks");
+        body.appendChild(mainContent(allTasksProject));
     });
 
     return buttonContainer;
