@@ -58,7 +58,7 @@ function customProjectButton(projectId) {
     deleteProjectIcon.classList.add("nav-icon");
     deleteProjectButton.appendChild(deleteProjectIcon);
     deleteProjectButton.addEventListener("click", () => {
-        body.appendChild(deleteProjectModal(Project));
+        body.appendChild(deleteProjectModal(Project.id));
         openModal(document.querySelector("#delete-project-modal"));
     });
 

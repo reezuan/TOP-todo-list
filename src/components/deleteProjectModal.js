@@ -1,12 +1,17 @@
 import { navSidebar } from "../components/navSidebar.js";
 import { closeModal } from "../utils/closeModal.js";
+import { getProject } from "../utils/getProject.js";
+import { deleteProjectTasks } from "../utils/deleteProjectTasks.js";
+import { deleteProject } from "../utils/deleteProject.js";
 
-function deleteProjectModal(Project) {
+function deleteProjectModal(projectId) {
     if (document.querySelector("#delete-project-modal") != null) { // Test if modal already exists.
         document.querySelector("#delete-project-modal").remove();
     };
+
+    const Project = getProject(projectId);
     
-    // "Delete Project" modal
+    // Modal
     const deleteProjectModal = document.createElement("div");
     deleteProjectModal.setAttribute("id", "delete-project-modal");
     deleteProjectModal.classList.add("modal");
@@ -23,6 +28,7 @@ function deleteProjectModal(Project) {
 
     cancelButton.addEventListener("click", () => {
         closeModal(cancelButton.closest(".modal"));
+        cancelButton.closest(".modal").remove();
     });
 
     // "Delete" button
@@ -31,9 +37,13 @@ function deleteProjectModal(Project) {
     deleteProjectModal.appendChild(deleteButton);
 
     deleteButton.addEventListener("click", () => {
-        const body = document.querySelector("body");
         closeModal(deleteButton.closest(".modal"));
-        Project.delete();
+        deleteButton.closest(".modal").remove();
+
+        deleteProjectTasks(projectId);
+        deleteProject(projectId);
+
+        const body = document.querySelector("body");
         body.appendChild(navSidebar());
     });
 

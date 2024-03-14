@@ -4,7 +4,6 @@ import { navSidebar } from "../components/navSidebar.js";
 import { mainContent } from "../components/mainContent.js";
 import { footer } from "../components/footer.js";
 import { overlay } from "../components/overlay.js";
-import { addProjectModal } from "../components/addProjectModal.js";
 import { initProjectsStorage } from "../services/initProjectsStorage.js";
 import { initTasksStorage } from "../services/initTasksStorage.js";
 import "./style.css";
