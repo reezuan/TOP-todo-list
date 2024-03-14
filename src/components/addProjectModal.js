@@ -38,6 +38,7 @@ function addProjectModal() {
     cancelButton.addEventListener("click", () => {
         closeModal(addProjectForm.closest(".modal"));
         addProjectForm.reset();
+        addProjectForm.closest(".modal").remove();
     });
 
     // "Create project" button

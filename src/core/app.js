@@ -20,5 +20,4 @@ import "./style.css";
     body.appendChild(mainContent(new AllTasks("All tasks")));
     body.appendChild(footer());
     body.appendChild(overlay());
-    body.appendChild(addProjectModal());
 })();

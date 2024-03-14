@@ -2,7 +2,7 @@ import { retrieveProjectsFromStorage } from "../utils/retrieveProjectsFromStorag
 
 function getProject(projectId) {
     const allProjects = retrieveProjectsFromStorage();
-    return allProjects.find(Project => Project.id == projectId);
+    return allProjects.find(Project => Project.id === projectId);
 }
 
 export { getProject };

@@ -142,6 +142,10 @@ header div:first-child img {
     margin: 0;
 }
 
+.sidebar .action-buttons {
+    opacity: 0;
+}
+
 /* ---------------------------- CONTENT ---------------------------- */
 
 section {
