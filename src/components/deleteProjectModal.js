@@ -1,4 +1,6 @@
-import { navSidebar } from "../components/navSidebar.js";
+import { AllTasks } from "../classes/AllTasks.js";
+import { navSidebar } from "./navSidebar.js";
+import { mainContent } from "./mainContent.js";
 import { closeModal } from "../utils/closeModal.js";
 import { getProject } from "../utils/getProject.js";
 import { deleteProjectTasks } from "../utils/deleteProjectTasks.js";
@@ -45,6 +47,7 @@ function deleteProjectModal(projectId) {
 
         const body = document.querySelector("body");
         body.appendChild(navSidebar());
+        body.appendChild(mainContent(new AllTasks()));
     });
 
     return deleteProjectModal;

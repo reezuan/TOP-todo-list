@@ -16,7 +16,7 @@ import "./style.css";
 
     body.appendChild(header());
     body.appendChild(navSidebar());
-    body.appendChild(mainContent(new AllTasks("All tasks")));
+    body.appendChild(mainContent(new AllTasks()));
     body.appendChild(footer());
     body.appendChild(overlay());
 })();
