@@ -5,6 +5,7 @@ import { getProject } from "../utils/getProject.js";
 function taskCard(Task) {
     const taskCard = document.createElement("button");
     taskCard.classList.add("task-card");
+    taskCard.setAttribute("id", Task.id);
 
     // Checkbox
     const taskCheckbox = document.createElement("button");
