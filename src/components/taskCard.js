@@ -18,6 +18,12 @@ function taskCard(Task) {
     taskTitle.textContent = Task.title;
     taskCard.appendChild(taskTitle);
 
+    // Task description
+    const taskDescription = document.createElement("p");
+    taskDescription.classList.add("task-description");
+    taskDescription.textContent = Task.description;
+    taskCard.appendChild(taskDescription);
+
     // Task metadata (date, labels & assigned project)
     const taskInfoLabels = document.createElement("div");
     taskInfoLabels.classList.add("task-info-labels");
