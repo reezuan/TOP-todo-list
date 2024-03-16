@@ -1,4 +1,6 @@
-import { LabelIcon, RenameIcon, DeleteIcon } from "../assets/index.js";
+import { LabelIcon } from "../assets/index.js";
+import { taskEditButton } from "./taskEditButton.js";
+import { taskDeleteButton } from "./taskDeleteButton.js";
 import { formatTaskCardDate } from "../utils/formatTaskCardDate.js";
 import { getProject } from "../utils/getProject.js";
 import { getTask } from "../utils/getTask.js";
@@ -26,6 +28,25 @@ function taskCard(taskId) {
     taskDescription.classList.add("task-description");
     taskDescription.textContent = Task.description;
     taskCard.appendChild(taskDescription);
+
+    // Edit & delete buttons
+    const taskActionButtonsContainer = document.createElement("div");
+    taskActionButtonsContainer.classList.add("task-action-buttons");
+    taskActionButtonsContainer.appendChild(taskEditButton(taskId));
+    taskActionButtonsContainer.appendChild(taskDeleteButton(taskId));
+    taskCard.appendChild(taskActionButtonsContainer);
+
+    taskCard.addEventListener("mouseenter", (event) => {
+        const activeTask = event.target;
+        const actionButtonContainer = activeTask.querySelector(".task-action-buttons");
+        actionButtonContainer.style.opacity = "1";
+    });
+
+    taskCard.addEventListener("mouseleave", (event) => {
+        const activeTask = event.target;
+        const actionButtonContainer = activeTask.querySelector(".task-action-buttons");
+        actionButtonContainer.style.opacity = "0";
+    });
 
     // Task metadata (date, labels & assigned project)
     const taskInfoLabels = document.createElement("div");
