@@ -9,6 +9,7 @@ function mainContent(Project) {
     };
     
     const content = document.createElement("section");
+    content.setAttribute("data-project-id", Project.id);
     
     const projectTitle = document.createElement("h2");
     projectTitle.classList.add("project-title");
