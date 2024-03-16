@@ -18,7 +18,7 @@ function mainContent(Project) {
 
     if (Project.tasks.length !== 0) {
         Project.tasks.forEach(Task => {
-            taskList.appendChild(taskCard(Task));
+            taskList.appendChild(taskCard(Task.id));
         });
     };
 

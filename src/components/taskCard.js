@@ -1,8 +1,11 @@
-import { LabelIcon } from "../assets/index.js";
+import { LabelIcon, RenameIcon, DeleteIcon } from "../assets/index.js";
 import { formatTaskCardDate } from "../utils/formatTaskCardDate.js";
 import { getProject } from "../utils/getProject.js";
+import { getTask } from "../utils/getTask.js";
 
-function taskCard(Task) {
+function taskCard(taskId) {
+    const Task = getTask(taskId);
+    
     const taskCard = document.createElement("button");
     taskCard.classList.add("task-card");
     taskCard.setAttribute("id", Task.id);
