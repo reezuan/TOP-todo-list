@@ -15,7 +15,7 @@ function customProjectButton(projectId) {
     projectButtonContainer.setAttribute("id", Project.id);
 
     projectButtonContainer.addEventListener("click", () => {
-        body.appendChild(mainContent(Project));
+        body.appendChild(mainContent(getProject(projectId)));
     });
 
     projectButtonContainer.addEventListener("mouseenter", (event) => {

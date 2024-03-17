@@ -2,6 +2,7 @@ import { getTask } from "../utils/getTask.js";
 import { closeModal } from "../utils/closeModal.js";
 import { deleteTask } from "../utils/deleteTask.js";
 import { getProject } from "../utils/getProject.js";
+import { updateProjectInStorage } from "../utils/updateProjectInStorage.js";
 import { mainContent } from "./mainContent.js";
 import { AllTasks } from "../classes/AllTasks.js";
 import { TasksToday } from "../classes/TasksToday.js";
@@ -39,12 +40,23 @@ function deleteTaskModal(taskId) {
     modal.appendChild(deleteButton);
 
     deleteButton.addEventListener("click", () => {
+        const body = document.querySelector("body");
+        
         closeModal(deleteButton.closest(".modal"));
         deleteButton.closest(".modal").remove();
 
         deleteTask(taskId);
 
-        const body = document.querySelector("body");
+        if (Task.associatedProjectId) {
+            const Project = getProject(Task.associatedProjectId);
+            let index = Project.tasks.findIndex(object => object.id === Task.id);
+            
+            if (index != -1) {
+                Project.tasks.splice(index, 1);
+            };
+            
+            updateProjectInStorage(Project);
+        };
 
         if (getProject(activeProjectId)) {
             const activeProject = getProject(activeProjectId);
